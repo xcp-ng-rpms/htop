@@ -1,10 +1,11 @@
 Name: htop
 Version: 2.2.0
-Release: 3%{?dist}
+Release: 3.1%{?dist}
 Summary: Interactive process viewer
 License: GPLv2+
 URL: http://hisham.hm/htop/
 Source0: http://hisham.hm/htop/releases/%{version}/%{name}-%{version}.tar.gz
+Source1: htoprc
 
 BuildRequires: desktop-file-utils
 BuildRequires: ncurses-devel
@@ -39,6 +40,8 @@ sed -i 's/hvCst:/hvCts/' htop.c
 
 desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 
+install -D %{SOURCE1} %{buildroot}/%{_sysconfdir}/htoprc
+
 %files
 %doc AUTHORS ChangeLog README
 %license COPYING
@@ -46,8 +49,12 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/htop.png
 %{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/htop.1*
+%config(noreplace) %{_sysconfdir}/htoprc
 
 %changelog
+* Mon Jun 03 2019 Samuel Verschelde <stormi-xcp@ylix.fr> - 2.2.0-3.1
+- Add custom default configuration in /etc/htoprc
+
 * Wed Jan 16 2019 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 2.2.0-3
 - Fix crash when launched with "-s" flag (bug# 1666551)
 
