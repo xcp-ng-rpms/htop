@@ -1,6 +1,6 @@
 Name: htop
 Version: 2.2.0
-Release: 3.2%{?dist}
+Release: 3.3%{?dist}
 Summary: Interactive process viewer
 License: GPLv2+
 URL: http://hisham.hm/htop/
@@ -52,6 +52,9 @@ install -D %{SOURCE1} %{buildroot}/%{_sysconfdir}/htoprc
 %config(noreplace) %{_sysconfdir}/htoprc
 
 %changelog
+* Tue Jun 30 2020 Samuel Verschelde <stormi-xcp@ylix.fr> - 2.2.0-3.3
+- Rebuild for XCP-ng 8.2
+
 * Fri Dec 20 2019 Samuel Verschelde <stormi-xcp@ylix.fr> - 2.2.0-3.2
 - Rebuild for XCP-ng 8.1
 
